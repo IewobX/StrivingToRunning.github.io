@@ -317,73 +317,18 @@
 
       
         
-          
-            <p>#####《参考JavaScript高级程序设计（第三版）》#####</p>
+          <p>#####《参考JavaScript高级程序设计（第三版）》#####</p>
 <p>#前端小白JS总结—基础篇#</p>
 <p>###数据类型###<br>基本类型: number,string,boolean,null,undefined<br>基本类型间相互转化: Number(),String(),Boolean()<br>引用类型: Object, Array, RegExp,基本包装类型等，所有引用类型都是Object的实例<br>基本类型与引用类型的区别: 基本类型按值访问，引用类型按引用访问</p>
 <blockquote>
-<p>   动态的属性，引用类型可以添加属性，基本类型无法添加属性</p>
-<p>   复制变量值，复制基本类型时会在变量对象上创建一个新值，复制引用类型时会         复制一份指针，指向存储在堆中的一个对象，两个变量实际上引用同一个对象。</p>
-<p>   传递参数，在向参数传递引用类型值时，会把这个值在内存中的地址复制给一个         局部变量</p>
-</blockquote>
-<p>基本包装类型: Boolean(),String(),Number(),与其他引用类型相似，可以更好的操作基本类型。</p>
-<blockquote>
-<p>   Boolean类型 是与布尔值相对应的引用类型，可以这样调用构造函数并传入布尔值<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var boolean = new Boolean(false);</div></pre></td></tr></table></figure></p>
-</blockquote>
-<pre><code> 它经常造成人们的误解 例如
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var booleanFalse = new Boolean(false);  </div><div class="line">var result = booleanFalse&amp;&amp;true;  </div><div class="line">alert(reasult)	//true</div></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>   Number类型 是与数字值相对应的引用类型，创建方法同上<br>    toString()方法，返回几进制数值的字符串形式<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var num = 10;  </div><div class="line">console.log(num.toString());	//&apos;10&apos;</div><div class="line">console.log(num.toString(2));	//&apos;1010&apos;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<pre><code>toFixed()方法，返回指定保留几位小数数值的字符串表示
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var num = 10.005;</div><div class="line">console.log(num.toFixed(2));	//&apos;10.01&apos;</div></pre></td></tr></table></figure>
-
-toExponential()方法，返回以指数表示法表示的数值的字符串形式，参数表示输出         结果中的小数位数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var num = 10;</div><div class="line">console.log(num.toExponential(1));	//‘1.0e+1’</div></pre></td></tr></table></figure>
-
-toPrecision()方法，返回固定大小格式。
-</code></pre><blockquote>
-<p>   String类型 是与字符串相对应的引用类型，创建方法同上<br>    length属性表示字符串长度<br>    访问字符串中特定字符的方法charAt()和charCodeAt()<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var stringValue = &apos;hello world&apos;;</div><div class="line">console.log(stringValue.charAt(1))	//&apos;e&apos;</div><div class="line">console.log(stringValue.charCodeAt(1))	//&apos;101&apos;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<pre><code>concat()方法，用于字符串拼接
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var stringValue = &apos;hello&apos;;</div><div class="line">console.log(stringValue.concat(&apos;world&apos;,&apos;!&apos;));	//&apos;hello world!&apos;</div></pre></td></tr></table></figure>
-
-基于子字符串创建新字符串的方法： slice(),substr(),substring(),
-substring()方法,用于提取字符串中介于两个指定下标之间的字符
-substr() 方法用于返回一个从指定位置开始的指定长度的子字符串。
-slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var test = &apos;hello world&apos;;</div><div class="line">console.log(test.slice(-3));         	//rld</div><div class="line">console,log(test.substring(-3));   	//hello world</div><div class="line">console,log(test.substr(-3));       	//rld</div><div class="line">console,log(test.slice(3,-4));	//lo w</div><div class="line">console,log(test.substring(3,-4));	//hel</div><div class="line">console,log(test.substr(3,-4));	//空字符串</div></pre></td></tr></table></figure>
-
-使用indexOf()和lastIndexOf()来查找字符串
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var stringValue = &apos;hello world&apos;</div><div class="line">console,log(stringValue.indexOf(&apos;o&apos;,6));	//7</div><div class="line">console,log(stringValue.lastIndexOf(&apos;o&apos;,6))	//4</div></pre></td></tr></table></figure>
-
-trim()创建一个字符串副本，删除前置及后缀所有空格，返回结果
-字符串大小写转换： toUpperCase(),toLowerCase();
-字符串模式匹配方法：match(),search(),replace()替换,split()分割
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">text = &quot;cat bat sat fat&quot;;</div><div class="line">var result = text.replace(&apos;at&apos;,&apos;ond&apos;);</div><div class="line">console.log(result)	//&apos;cond bat sat fat&apos;</div><div class="line">result = text.replace(/at/g,&apos;ond&apos;);</div><div class="line">console.log(result)	//&apos;cond bond sond fond-&apos;</div></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var colorText = &apos;red,blue,green.yellow&apos;;</div><div class="line">var color1 = colorText.split(&apos;,&apos;);	//[&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;,&apos;yellow&apos;]</div><div class="line">var color2 = colorText.split(&apos;,&apos;2);	//[&apos;red&apos;,&apos;blue&apos;]</div></pre></td></tr></table></figure>
-
-localeCompare()用于比较两个字符串
-</code></pre><p>检测类型： 推荐使用instanceof</p>
-<p>###作用域###</p>
-<blockquote>
-<p>   变量对象:每个执行环境都有一个与之相关联的变量对象,这个对象保存了环境         中定义的所有变量和函数.</p>
-<p>   作用域链:当代码在一个环境中执行时,会创建一个变量对象的作用域链.在我看     来,作用域链可以看作是一个数组里面保存着一个或几个指向变量对象的指针,         其中第一个值是指向当前函数(或全局)的变量对象的指针,第二个值是指向外部     环境的变量对象的指针,第三个值是指向外部环境的外部环境的变量对象的指         针,直到全局执行环境.</p>
-</blockquote>
-<p>标识符的解析是沿着作用域链一级一级的搜索标识符的过程.搜索过程始终从作用域链的前端开始,逐级向后回溯,直到找到目标标识符为止.</p>
-<p>###变量###<br>变量的定义使用var,let(es6)，松散类型（弱类型）声明前不加var或let表示直接声明全局变量<br>无块级作用域<br>变量提升，将变量提升到作用域顶端，但只是提升变量的声明，并不提升赋值。</p>
-<p>###函数###<br>函数的定义使用function,const(es6)，没有重载</p>
-<p>####函数声明####<br>即用<code>function functionName(){}</code>进行声明<br>函数声明提升，在执行代码前会先读取函数声明</p>
-<p>####函数表达式####<br><code>var functionName = function(){}</code>形式<br>创建一个匿名函数，并将其赋值给变量functionName，没有函数提升。</p>
-<blockquote>
-<p>   闭包: 针对一个函数A，该函数A有权访问另一个函数B作用域中的变量，此时         就形成了一个闭包。<br>    <a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">参考阮一峰先生所写的闭包</a> </p>
-<p>   this:指的是，调用函数的那个对象</p>
-<p>   匿名函数:顾名思义,没有名字的函数,匿名函数的执行环境具有全局性,所以其         this通常指向window(在通过call()或apply()改变函数执行环境的情况下,this就会指向其他对象)<br>    模仿块级作用域:我们知道,js是没有块级作用域的,也就是说,在块级作用域中定义的变量实际上是在包含函数中创建的.匿名函数可以模拟块级作用域<code>(function(){})()</code>表示一个立即执行的匿名函数.</p>
-<p>   私有变量:js中,任何函数中定义的变量都可以认为是私有变量,因为不能再函数          外部访问他们,私有变量包括函数的参数,局部变量和在函数内部定义的其他函         数.有权访问函数 私有变量和私有方法的 公有方法,称之为特权方法,这类似         java中的私有成员.<br>   静态私有变量 通过原型来实现静态.</p>
-</blockquote>
-
-          
+<p>   动态的属性，引用类型可以添加属性，基本类型无法添加属性<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/13/前端小白的js总结-基础篇-md/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
